@@ -9,6 +9,8 @@ import shortuuid
 import csv
 import re
 from datetime import datetime
+import fitz
+from pdf import generate_pdf
 def valid_rendszam(rendszam):
     rendszam_regex = re.compile(r'^[A-Z0-9]{2,}(?:-[A-Z]{2,})?(?:-[A-Z0-9]{1,})?$')    # Rendszámok formátuma: AAA-123 ,AA-BB-123
     return bool(re.match(rendszam_regex, rendszam))
@@ -28,6 +30,7 @@ while not valid_rendszam(rendszam_bekeres):
     rendszam_bekeres = input("Kérlek, add meg a gépjármű forgalmi rendszámát: ").upper()
 
 km_adatbekeres = int(input("Kérlek, add meg a kilóméteróra állását: "))
+formatted_km = "{:,}".format(km_adatbekeres) + " km"
 uttipus_adatbekeres = input("Kérlek add meg az út tipusát az alábbiak közül: // Magánút, Céges, Egyéb, Nem ismert // => ").upper()
 input_date = input("Kérlek, add meg a dátumot (ÉÉÉÉ-HH-NN formátumban): ")
 try:
@@ -38,11 +41,10 @@ except ValueError:
 date_wi_t = date_obj.replace(hour=0, minute=0, second=0, microsecond=0)
 tipus = tipus_adatbekeres
 rendszam = rendszam_bekeres
-km = str(km_adatbekeres) + " km"
 uttipus = uttipus_adatbekeres
 
 table.field_names = ["Azonosító","Típus", "Rendszám", "Óraállás", "Úttípus", "Dátum"]
-table.add_row([azonosito, tipus, rendszam, km, uttipus,date_wi_t])
+table.add_row([azonosito, tipus, rendszam, formatted_km, uttipus,date_wi_t])
 print(table)
 with open('gepjarmu_adatok.csv', mode='a', newline='') as file:
     writer = csv.writer(file)
@@ -50,15 +52,16 @@ with open('gepjarmu_adatok.csv', mode='a', newline='') as file:
     if file.tell() == 0:
         writer.writerow(["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Dátum"])
     # Írja ki az új rekordot
-    writer.writerow([azonosito, tipus, rendszam, km, uttipus, date_wi_t])
-"""
-adatmegtek = input("Kívánod megtekinteni az eddigi összes adatot a fájlban? (IGEN / NEM): ").upper()
-if adatmegtek == "IGEN":
-    with open('gepjarmu_adatok.csv', mode='r') as file:
-        reader = csv.DictReader(file)
-        table = PrettyTable(field_names=reader.fieldnames)
-        for row in reader:
-            table.add_row(row.values())
-    print(table)
-"""
+    writer.writerow([azonosito, tipus, rendszam, formatted_km, uttipus, date_wi_t])
+    print(f"Adatok mentve!")
+# PDF generálás PyMuPDF segítségével
+table_data = [
+    ["Azonosító", azonosito],
+    ["Típus", tipus],
+    ["Rendszám", rendszam],
+    ["Óraállás", formatted_km],
+    ["Úttípus", uttipus],
+    ["Dátum", date_wi_t]
+]
 
+generate_pdf(azonosito, table_data)
