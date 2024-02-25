@@ -11,6 +11,7 @@ import re
 from datetime import datetime
 import fitz
 from pdf import generate_pdf
+import openstreetmap_api
 def valid_rendszam(rendszam):
     rendszam_regex = re.compile(r'^[A-Z0-9]{2,}(?:-[A-Z]{2,})?(?:-[A-Z0-9]{1,})?$')    # Rendszámok formátuma: AAA-123 ,AA-BB-123
     return bool(re.match(rendszam_regex, rendszam))
