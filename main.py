@@ -9,7 +9,6 @@ import shortuuid
 import csv
 import re
 from datetime import datetime
-import fitz
 from pdf import generate_pdf
 from openstreetmap_api import distmain
 def valid_rendszam(rendszam):
@@ -47,10 +46,6 @@ uttipus = uttipus_adatbekeres
 ut_adatok = distmain()
 if ut_adatok:
     origin_location, destination_location, distance = ut_adatok
-    print(f"Kiinduló település: {origin_location}")
-    print(f"Céltelepülés: {destination_location}")
-    print(f"Távolság: {distance} km")
-
 table.field_names = ["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Kiindulás", "Végállomás" ,"Távolság","Dátum"]
 table.add_row([azonosito, tipus, rendszam, formatted_km, uttipus, origin_location, destination_location,distance, date_wi_t])
 print(table)
