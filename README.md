@@ -33,7 +33,7 @@ A program rendszámokat kizárólag a jelenleg hatályos publikusan, bárki szá
 
 ## Demonstráció
 
-```python
+```text
 Kérlek, add meg a gépjármű típusát: Mitsubishi Lancer EVO X
 Kérlek, add meg a gépjármű forgalmi rendszámát: AA-BB-123
 Kérlek, add meg a kilóméteróra állását: 248147
