@@ -1,6 +1,5 @@
 import requests
 
-
 def get_coordinates(location):
     try:
         response = requests.get(f"https://nominatim.openstreetmap.org/search", params={"q": location, "format": "json"})
@@ -38,7 +37,7 @@ def get_distance(origin, destination):
         return None
 
 
-def main():
+def distmain():
     origin_location = input("Kérem, adja meg az indulási települést: ")
     destination_location = input("Kérem, adja meg a céltelepülést: ")
 
@@ -47,11 +46,12 @@ def main():
 
     if origin_coordinates and destination_coordinates:
         distance = round(get_distance(origin_coordinates, destination_coordinates) / 1000, 2)
-        print(f"A távolság a két pont között: {distance} Km")
+        print(f"Út adatai:")
+        print(f"Kiinduló település: {origin_location}")
+        print(f"Céltelepülés: {destination_location}")
+        print(f"Távolság: {distance} km")
+
+        return (origin_location, destination_location, distance)
     else:
         print("Hibás településnév vagy nem találhatóak koordináták.")
-
-
-if __name__ == "__main__":
-    main()
-
+        return None

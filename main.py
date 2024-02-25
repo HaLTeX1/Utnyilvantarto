@@ -11,7 +11,7 @@ import re
 from datetime import datetime
 import fitz
 from pdf import generate_pdf
-import openstreetmap_api
+from openstreetmap_api import distmain
 def valid_rendszam(rendszam):
     rendszam_regex = re.compile(r'^[A-Z0-9]{2,}(?:-[A-Z]{2,})?(?:-[A-Z0-9]{1,})?$')    # Rendszámok formátuma: AAA-123 ,AA-BB-123
     return bool(re.match(rendszam_regex, rendszam))
@@ -44,25 +44,33 @@ tipus = tipus_adatbekeres
 rendszam = rendszam_bekeres
 uttipus = uttipus_adatbekeres
 
-table.field_names = ["Azonosító","Típus", "Rendszám", "Óraállás", "Úttípus", "Dátum"]
-table.add_row([azonosito, tipus, rendszam, formatted_km, uttipus,date_wi_t])
+ut_adatok = distmain()
+if ut_adatok:
+    origin_location, destination_location, distance = ut_adatok
+    print(f"Kiinduló település: {origin_location}")
+    print(f"Céltelepülés: {destination_location}")
+    print(f"Távolság: {distance} km")
+
+table.field_names = ["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Kiindulás", "Végállomás" ,"Távolság","Dátum"]
+table.add_row([azonosito, tipus, rendszam, formatted_km, uttipus, origin_location, destination_location,distance, date_wi_t])
 print(table)
 with open('gepjarmu_adatok.csv', mode='a', newline='') as file:
     writer = csv.writer(file)
     # Ellenőrizze, hogy a fejléc már létezik-e a fájlban
     if file.tell() == 0:
-        writer.writerow(["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Dátum"])
+        writer.writerow(["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Kiindulás", "Végállomás" ,"Távolság","Dátum"])
     # Írja ki az új rekordot
-    writer.writerow([azonosito, tipus, rendszam, formatted_km, uttipus, date_wi_t])
+    writer.writerow([azonosito, tipus, rendszam, formatted_km, uttipus, origin_location, destination_location,distance, date_wi_t])
     print(f"Adatok mentve!")
 # PDF generálás PyMuPDF segítségével
 table_data = [
     ["Azonosító", azonosito],
+    ["Kiinduló település", origin_location],
+    ['Végállomás', destination_location],
+    ['Távolság', distance],
     ["Típus", tipus],
     ["Rendszám", rendszam],
     ["Óraállás", formatted_km],
     ["Úttípus", uttipus],
-    ["Dátum", date_wi_t]
-]
-
+    ["Dátum", date_wi_t]]
 generate_pdf(azonosito, table_data)
