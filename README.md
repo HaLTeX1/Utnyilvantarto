@@ -56,4 +56,6 @@ PDF fájl létrehozva: gepjarmu_adatlap_WvKM2UqrSo3pVyNbjTdpV6.pdf
 
 ```
 
+## Licensz
 
+[GNU General Public License Version 3](https://raw.githubusercontent.com/HaLTeX1/Utnyilvantarto/main/LICENSE)
