@@ -37,5 +37,3 @@ def generate_pdf(azonosito, table_data):
     existing_pdf.save(pdf_filename)
 
     print(f"PDF file created: {pdf_filename}")
-
-# The rest of your code remains the same
