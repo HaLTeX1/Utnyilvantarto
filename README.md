@@ -27,6 +27,8 @@ A program rendszámokat kizárólag a jelenleg hatályos publikusan, bárki szá
 - AA-BB-123
 - AAA-123
 
+A program minden adatbevitelhez egy egyedi azonosítót generál amellyel a generált PDF-et elnevezi illetve ennek megfelelően beilleszti a CSV állományba.
+Az óraállást **kizárólag számokkal szükséges megadni**, a program automatikusan tagolja ezres nagyságrendben illetve kiegészíti a km jelzéssel!
 
 ## Demonstráció
 
