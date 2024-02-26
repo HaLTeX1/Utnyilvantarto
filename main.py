@@ -32,13 +32,14 @@ while not valid_rendszam(rendszam_bekeres):
 km_adatbekeres = int(input("Kérlek, add meg a kilóméteróra állását: "))
 formatted_km = "{:,}".format(km_adatbekeres) + " km"
 uttipus_adatbekeres = input("Kérlek add meg az út tipusát az alábbiak közül: // Magánút, Céges, Egyéb, Nem ismert // => ").upper()
-input_date = input("Kérlek, add meg a dátumot (ÉÉÉÉ-HH-NN formátumban): ")
-try:
-    date_obj = datetime.strptime(input_date, "%Y-%m-%d")
-except ValueError:
-    print("Hibás dátum formátum. Kérem, használja az ÉÉÉÉ-HH-NN formátumot.")
-    exit()
-date_wi_t = date_obj.replace(hour=0, minute=0, second=0, microsecond=0)
+while True:
+    input_date = input("Kérlek, add meg a dátumot (ÉÉÉÉ-HH-NN formátumban): ")
+    try:
+        date_obj = datetime.strptime(input_date, "%Y-%m-%d")
+        break  # Kilép a ciklusból, ha a dátum megfelelő formátumú
+    except ValueError:
+        print("Hibás dátum formátum. Kérem, használja az ÉÉÉÉ-HH-NN formátumot.")
+date_wi_t = date_obj.date()
 tipus = tipus_adatbekeres
 rendszam = rendszam_bekeres
 uttipus = uttipus_adatbekeres
