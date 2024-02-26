@@ -51,9 +51,9 @@ Távolság: 30.39 km
 Adatok mentve!
 PDF fájl létrehozva: gepjarmu_adatlap_WvKM2UqrSo3pVyNbjTdpV6.pdf
 
+
+```
 ## Licensz
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-```
 
