@@ -50,7 +50,7 @@ if ut_adatok:
 table.field_names = ["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Kiindulás", "Végállomás" ,"Távolság","Dátum"]
 table.add_row([azonosito, tipus, rendszam, formatted_km, uttipus, origin_location, destination_location,distance, date_wi_t])
 print(table)
-with open('gepjarmu_adatok.csv', mode='a', newline='') as file:
+with open('Data/gepjarmu_adatok.csv', mode='a', newline='') as file:
     writer = csv.writer(file)
     if file.tell() == 0:
         writer.writerow(["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Kiindulás", "Végállomás" ,"Távolság","Dátum"])
