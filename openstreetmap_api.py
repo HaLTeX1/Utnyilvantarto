@@ -47,6 +47,7 @@ def distmain():
     if origin_coordinates and destination_coordinates:
         distance = round(get_distance(origin_coordinates, destination_coordinates) / 1000, 2)
         print(f"Út adatai:")
+        print(" ")
         print(f"Kiinduló település: {origin_location}")
         print(f"Céltelepülés: {destination_location}")
         print(f"Távolság: {distance} km")
