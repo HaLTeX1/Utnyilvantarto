@@ -19,16 +19,13 @@ majd egy táblázatban megjeleníti ezeket az adatokat illetve menti egy CSV fá
 
 ## API kezelése
 A program a publikusan bárki számára elérhető [OpenStreetMap](https://www.openstreetmap.org/#map=8/47.184/19.509) API segítségével kéri le az útra vonatkozó adatokat ezért külön konfigurálni már nem szükséges.
+Az API a megadott két település ( *induló-vég* ) koordinátái alapján kalkulálja ki a távolságot kilóméterben két tizedesre kerekítve.
+A kezdetnél **pontos cím is megadható**, nem csak település. Ebben az esetben a program pontosabban számítja ki a távolságot. 
 
 ## Adatkezelés
 A program rendszámokat kizárólag a jelenleg hatályos publikusan, bárki számára elérhető rendszámok közül fogad.
 - AA-BB-123
 - AAA-123
-
-
-## Licensz
-
-[MIT](https://choosealicense.com/licenses/mit/)
 
 
 ## Demonstráció
@@ -53,6 +50,10 @@ Távolság: 30.39 km
 +------------------------+-------------------------+-----------+------------+---------+-----------+------------+----------+---------------------+
 Adatok mentve!
 PDF fájl létrehozva: gepjarmu_adatlap_WvKM2UqrSo3pVyNbjTdpV6.pdf
+
+## Licensz
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ```
 
