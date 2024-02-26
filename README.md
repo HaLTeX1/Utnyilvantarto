@@ -19,7 +19,7 @@ majd egy táblázatban megjeleníti ezeket az adatokat illetve menti egy CSV fá
 
 ## API kezelése
 A program a publikusan bárki számára elérhető [OpenStreetMap](https://www.openstreetmap.org/#map=8/47.184/19.509) API segítségével kéri le az útra vonatkozó adatokat ezért külön konfigurálni már nem szükséges.
-Az API a megadott két település ( *Kiindulás - Végállomás* ) koordinátái alapján kalkulálja ki a távolságot kilóméterben két tizedesre kerekítve.
+Az API a megadott két település ( *Kiindulás - Végállomás* ) koordinátái alapján kalkulálja ki a távolságot kilóméterben két tizedesjegyre kerekítve.
 A kiinduló illetve végállomásnál **pontos cím is megadható**, nem csak település. Ebben az esetben a program pontosabban számítja ki a távolságot. 
 
 ## Adatkezelés
