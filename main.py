@@ -51,7 +51,6 @@ table.add_row([azonosito, tipus, rendszam, formatted_km, uttipus, origin_locatio
 print(table)
 with open('gepjarmu_adatok.csv', mode='a', newline='') as file:
     writer = csv.writer(file)
-    # Ellenőrizze, hogy a fejléc már létezik-e a fájlban
     if file.tell() == 0:
         writer.writerow(["Azonosító" ,"Típus", "Rendszám", "Óraállás", "Úttípus", "Kiindulás", "Végállomás" ,"Távolság","Dátum"])
     # Írja ki az új rekordot
