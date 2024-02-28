@@ -65,7 +65,6 @@ PDF fájl létrehozva: Data\route_maps_20240226_215447\gepjarmu_adatlap_8PhPkxFB
 ```
 ## Használat
 A Projekt Python 3.11 alatt tesztelt. 
-A szükséges modulok telepítése
 Az **RE** modul előre beépített, nem szükséges külön telepíteni!
 
 ```bash
